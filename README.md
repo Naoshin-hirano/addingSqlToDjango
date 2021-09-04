@@ -5,7 +5,9 @@
 
 <h2>完成版プロジェクト</h2>
 https://github.com/shun-rec/django-website-05
-  
+
+<h2>Youtube</h2>
+https://www.youtube.com/watch?v=k3feQcc6bFw&t=64s
   
 <h2> 目次</h2>
 事前準備
