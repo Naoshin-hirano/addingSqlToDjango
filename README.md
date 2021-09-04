@@ -180,10 +180,10 @@ MIDDLEWARE = [
   ```
 最後に以下を追記
 
-  ```
+```
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-  ```
+```
 〜詳細説明〜
 
 手元のPostgresには当然Herokuからはアクセス出来ません。
