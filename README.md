@@ -70,14 +70,17 @@ DATABASES = {
     'default': dj_database_url.config(conn_max_age=600),
 }
 ```
+  
 load_dotenvで環境設定ファイルを読み込み、
 dj_database_url.configで自動的に設定されます。
 conn_max_age=600というのは今は理解不要ですが、高速化の設定です。
   
   <h2>MySQL用ライブラリのインストール</h2>
+  
 ```
 pip install mysqlclient
 ```
+  
 <h3>MySQL上にプロジェクト用データベースを作成</h3>
 MySQLにログイン
 rootというユーザー名でログインするという意味。
@@ -85,6 +88,7 @@ rootというユーザー名でログインするという意味。
 ```
 mysql -u root
 ```
+  
   <h3>djangoからMySQLに接続するユーザーのパスワードを設定</h3>
 rootというユーザーのパスワードをpasswordに変更するという意味。
 
@@ -98,6 +102,7 @@ pj_dbという新しいデータベースを作成するという意味。
   ```
 create database pj_db;
   ```
+  
   <h2>環境設定ファイルを設置</h2>
 プロジェクト直下に```.env```というファイル名でファイルを作り、以下の内容を入力。
 
@@ -117,30 +122,38 @@ Sqlite3の場合と同様のため省略します。
 MySQLと同じため省略します。
 
 <h3>Postgres用ライブラリのインストール</h3>
+  
   ```
 pip install psycopg2-binary
   ```
+  
 <h3>プロジェクト用のデータベースを作成</h3>
 Postgresにログイン
+  
   ```
 sudo -u postgres psql postgres
   ```
+  
   <h3>ユーザーにパスワード設定</h3>
 postgresというユーザーにパスワードを設定するという意味。
 
   ```
 \password postgres
   ```
+  
   <h3>データベース作成</h3>
+  
   ```
 CREATE DATABASE pj_db;
   ```
+  
 <h3>Postgresからログアウト</h3>
 \q
 <h3>環境設定ファイルを設置</h3>
-  ```
+  
+```
 DATABASE_URL=postgres://postgres:password@localhost/pj_db
-  ```
+```
   <h3>接続確認</h3>
 Sqlite3の場合と同様のため省略します。
 
@@ -154,7 +167,8 @@ Sqlite3の場合と同様のため省略します。
 してHerokuサーバーにアップロードするだけです。
   
   <h3>requirements.txt</h3>
-  ```
+  
+```
 django
 gunicorn
 whitenoise
@@ -162,22 +176,24 @@ dj-database-url
 python-dotenv
 psycopg2-binary
 mysqlclient
-  ```
+```
   <h3>Procfile</h3>
-  ```
+  
+```
 web: gunicorn pj_db.wsgi
-  ```
+```
   <h3>静的ファイルの設定</h3>
 whitenoiseの設定
 全体設定ファイルの編集
 
 MIDDLEWAREの最後にwhitenoiseを追加
+  
 ```
 MIDDLEWARE = [
     ...
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-  ```
+```
 最後に以下を追記
 
 ```
